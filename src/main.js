@@ -8,6 +8,7 @@ let page = 1;
 let perPage = 15;
 let maxPage = 0;
 let currentPage = 1;
+let inputValue;
 const gallery  = document.querySelector(".gallery");
 const preloader = document.querySelector(".loader");
 const form = document.querySelector(".js-form");
@@ -49,7 +50,8 @@ async function validInput(event) {
     }
     await getImages(query)
     
-    try {
+  try {
+    const data = await getImages(query);
         if (data.hits.length === 0) {
 
             maxPage = Math.ceil(data.totalHits / perPage);
@@ -86,7 +88,7 @@ async function onLoadMore() {
   hideLoadMore();
   showLoader();
   try {
-    const data = await getImages(inputValue, currentPage);
+    const data = await getImages(query, currentPage); 
     renderImages(data.hits);
   } catch (error) {
     iziToast.error({
@@ -101,6 +103,7 @@ async function onLoadMore() {
   myScroll();
   checkButtonStatus();
 }
+
 
 function checkButtonStatus() {
   if (currentPage >= maxPage) {
