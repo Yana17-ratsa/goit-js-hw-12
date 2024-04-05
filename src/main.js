@@ -8,7 +8,6 @@ let page = 1;
 let perPage = 15;
 let maxPage = 0;
 let currentPage = 1;
-let inputValue;
 const gallery  = document.querySelector(".gallery");
 const preloader = document.querySelector(".loader");
 const form = document.querySelector(".js-form");
