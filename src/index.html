@@ -9,21 +9,15 @@
   </head>
   <body>
 
-    <form class="js-form">
-      <input type="text" name="search" placeholder="Search images..." />
-      <button type="submit">Search</button>
-      <div class="loader is-hidden"></div>
-    </form>
-    
-    <ul class="gallery"></ul>
-
-    <!-- <button type="button" class="js-load-more">Load more</button> -->
-    <div class="button-wrapper">
-      <button type="button" class="js-load-more is-hidden">Load more</button>
-    </div>
-    <div class="loader-wrapper">
-      <div class="loader is-hidden"></div>
-    </div>
+      <form class="form">
+        <input type="text" name="query" id="searchInput" placeholder="Search images...">
+        <button type="submit">Search</button>
+      </form>
+      <span class="loader"></span>
+      <div class="container">
+        <ul class="gallery"></ul>
+      </div>
+      <button type="button" class="load-more-button">Load more</button>
 
     <script type="module" src="./main.js"></script>
   </body>

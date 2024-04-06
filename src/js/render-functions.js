@@ -1,20 +1,33 @@
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const gallery  = document.querySelector(".gallery");
+import { refs, lightbox, displayMessage } from '../main';
 
-const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',});
 
-    export function renderMarkup(data) {
-        const galleryMArkup = data.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
-            return `<li class="item-image">
-                <a class="photos-list-link" href="${largeImageURL}">             <img class="photo" src="${webformatURL}" alt="${tags}"/>             </a>             <ul class="photo-information-container">                <li class="item-photo-information-container"><p><span class="accent">Likes</span>${likes}</p></li>
-                <li class="item-photo-information-container"><p><span class="accent">Views</span>${views}</p></li>                <li class="item-photo-information-container"><p><span class="accent">Comments</span>${comments}</p></li>                 <li class="item-photo-information-container"><p><span class="accent">Downloads</span>${downloads}</p></li>                </ul>                </li>`;
-            })  
-            .join("");
+export function render(data) {
+    if (data.hits.length === 0) {
+        displayMessage(
+        'Sorry, there are no images matching your search query. Please try again!'
+        );
+    } else {
+        const images = data.hits;
 
-            gallery.insertAdjacentHTML  ('beforeend', galleryMArkup);
+        const markup = images.map(image => 
+            `<li class="gallery-item">
+                <a class="gallery-link" href="${image.largeImageURL}">
+                <img loading="lazy" class="gallery-image" src="${image.webformatURL}" alt="${image.tags}" />
+                </a>
+                <div class="stats">
+                    <p class="text">Likes<br/>${image.likes}</p>
+                    <p class="text">Views<br/>${image.views}</p>
+                    <p class="text">Comments<br/>${image.comments}</p>
+                    <p class="text">Downloads<br/>${image.downloads}</p>
+                </div>
+            </li>`).join('');
 
-            lightbox.refresh();
+    refs.gallery.insertAdjacentHTML('beforeend', markup);
+    lightbox.refresh();
     }
+}
