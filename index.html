@@ -7,27 +7,21 @@
     <title>Vanilla App Template</title>
     
     <script type="module" crossorigin src="/goit-js-hw-12/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-06b1bbdf.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-09d7c26e.js">
     <link rel="stylesheet" href="/goit-js-hw-12/assets/vendor-1cd1f9d9.css">
-    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-aaf85852.css">
+    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-41bf7dc6.css">
   </head>
   <body>
 
-    <form class="js-form">
-      <input type="text" name="search" placeholder="Search images..." />
-      <button type="submit">Search</button>
-      <div class="loader is-hidden"></div>
-    </form>
-    
-    <ul class="gallery"></ul>
-
-    <!-- <button type="button" class="js-load-more">Load more</button> -->
-    <div class="button-wrapper">
-      <button type="button" class="js-load-more is-hidden">Load more</button>
-    </div>
-    <div class="loader-wrapper">
-      <div class="loader is-hidden"></div>
-    </div>
+      <form class="form">
+        <input type="text" name="query" id="searchInput" placeholder="Search images...">
+        <button type="submit">Search</button>
+      </form>
+      <span class="loader"></span>
+      <div class="container">
+        <ul class="gallery"></ul>
+      </div>
+      <button type="button" class="load-more-button">Load more</button>
 
     
   </body>
